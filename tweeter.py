@@ -1,5 +1,4 @@
 from histogram import Dictogram
-from wordsegment import segment
 from parsemarkov import generate_random_start,generate_random_sentence
 from markov import make_higher_order_markov_model,make_markov_model
 import random
@@ -49,13 +48,12 @@ if __name__=='__main__':
 
     def generate_tweet(model,followers):
         tweet=''
-        while len(tweet)<=140:
+        while len(tweet)<=138: # 138 instead of 140 to avoid off-by-one errors 
             temp=generate_random_sentence(10,model,followers) # Quotes contain average of 10 words and each word on average 5 letters therefore 50letters+10spaces=60 characters
-            if len(tweet+temp)<=140:
+            if len(tweet+temp)<=138:
                 tweet+=temp
             else:
                 break
-
 
         return tweet
 
