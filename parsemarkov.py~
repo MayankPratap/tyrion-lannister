@@ -1,0 +1,31 @@
+from histogram import Dictogram
+import random
+
+def generate_start_word(model):	
+
+    """ One more way to generate starting word is to take randomly only the starting words of 
+        sentences existing in corpus."""
+
+	if 'END' in model:
+		seed_word='END'
+		while seed_word=model['END'].return_weighted_random_word()
+		    seed_word=model['END'].return_weighted_random_word()
+        return seed_word
+
+    return random.choice(model.keys()) 
+
+def generate_sentence(length,markov_model):  
+	current_word=generate_random_start(markov_model)
+	sentence=[current_word]
+
+	for i in range(0,length):
+		current_dictogram=markov_model[current_word]
+		random_weighted_word=current_dictogram.return_weighted_random_word()
+		current_word=random_weighted_word
+		sentence.append(current_word)
+	sentence[0]=sentence[0].capitalize()
+
+	return ' '.join(sentence)+'.'    # Returns a string which is combination of words in the list sentence with delimter as space. 
+	#return sentence
+
+
